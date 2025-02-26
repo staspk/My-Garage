@@ -1,0 +1,2 @@
+Silver 565
+This. DMZs, VLANs and the like are pretty old school solutions that don't make much sense anymore.
