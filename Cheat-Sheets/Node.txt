@@ -1,5 +1,0 @@
-PM2 for Production Server Management
-
-npm i -g appium => Install globally
-
-npm install --save-dev @types/node => Will help vscode "go to definition" for node libs
