@@ -1,0 +1,16 @@
+
+
+
+Intel 4004 - first 4-bit CPU
+	Used to build calculators
+
+8-bit - July 15, 1983
+
+6502 - 8‑bit microprocessor
+	Apple II, Commodore 64, Atari 8
+	NES, Atari 2600
+	
+	
+	
+infra red
+rf based
