@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics_sim", "physics_sim.vcxproj", "{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Debug|x64.ActiveCfg = Debug|x64
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Debug|x64.Build.0 = Debug|x64
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Debug|x86.ActiveCfg = Debug|Win32
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Debug|x86.Build.0 = Debug|Win32
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Release|x64.ActiveCfg = Release|x64
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Release|x64.Build.0 = Release|x64
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Release|x86.ActiveCfg = Release|Win32
+		{90A41FB9-DAF6-4ABC-973A-7C68A4E97D71}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C987F4B-0686-4880-85D6-5244F9C2A663}
+	EndGlobalSection
+EndGlobal
