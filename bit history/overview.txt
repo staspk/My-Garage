@@ -1,5 +1,7 @@
 
 
+A Mathematical Theory of Communication - C. E. SHANNON - July, October, 1948
+
 
 Intel 4004 - first 4-bit CPU
 	Used to build calculators
@@ -14,3 +16,5 @@ Intel 4004 - first 4-bit CPU
 	
 infra red
 rf based
+
+
