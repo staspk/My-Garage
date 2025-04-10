@@ -1,0 +1,92 @@
+#sound-wave {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  height: 800px;
+
+  clip-path: polygon(
+    0 0,
+    calc(50% - 100px) 0,
+    calc(50% - 100px) 100%,
+    calc(50% + 100px) 100%,
+    calc(50% + 100px) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.wave-line {
+	position: relative;
+  width: 2px;
+  height: 300px;
+  background: linear-gradient(to bottom, transparent, #0080ff3b, transparent);
+  animation: wave 6s 0.3s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes wave {
+  0%  {  transform: scaleY(1)    }
+  10% {  transform: scaleY(0.2)  }
+  20% {  transform: scaleY(1)    }
+  30% {  transform: scaleY(0.2)  }
+  40% {  transform: scaleY(1)    }
+  50% {  transform: scaleY(0.2)  }
+  60% {  transform: scaleY(1)    }
+  70% {  transform: scaleY(0.2)  }
+  80% {  transform: scaleY(1)    }
+  90% {  transform: scaleY(0.2)  }
+  100%{  transform: scaleY(1)    }
+}
+
+.line1  {  height: 106px; }
+.line2  {  height: 78px;  }
+.line3  {  height: 130px; }
+.line4  {  height: 210px; }
+.line5  {  height: 86px;  }
+.line6  {  height: 150px; }
+.line7  {  height: 108px; }
+.line8  {  height: 158px; }
+.line9  {  height: 158px; }
+.line10 {  height: 210px; }
+.line11 {  height: 116px; }
+.line12 {  height: 252px; }
+.line13 {  height: 182px; }
+.line14 {  height: 258px; }
+.line15 {  height: 252px; }
+.line16 {  height: 432px; }
+.line17 {  height: 342px; }
+.line18 {  height: 286px; }
+.line19 {  height: 106px; }
+.line20 {  height: 156px; }
+.line21 {  height: 174px; }
+.line22 {  height: 426px; }
+.line23 {  height: 356px; }
+.line24 {  height: 316px; }
+.line25 {  height: 446px; }
+.line26 {  height: 370px; }
+.line27 {  height: 298px; }
+.line28 {  height: 184px; }
+.line29 {  height: 162px; }
+.line30 {  height: 130px; }
+.line31 {  height: 174px; }
+.line32 {  height: 156px; }
+.line33 {  height: 182px; }
+.line34 {  height: 264px; }
+.line35 {  height: 258px; }
+.line36 {  height: 432px; }
+.line37 {  height: 650px; }
+.line38 {  height: 530px; }
+.line39 {  height: 342px; }
+.line40 {  height: 576px; }
+.line41 {  height: 258px; }
+.line42 {  height: 374px; }
+.line43 {  height: 296px; }
+.line44 {  height: 150px; }
+.line45 {  height: 174px; }
+.line46 {  height: 296px; }
+.line47 {  height: 80px;  }
+.line48 {  height: 150px; }
+.line49 {  height: 150px; }
+.line50 {  height: 174px; }

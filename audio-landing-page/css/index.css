@@ -1,0 +1,34 @@
+* { margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
+  z-index: -9;
+  /* background-color: transparent; */
+}
+
+canvas {
+  background-color: black;
+  z-index: -7;
+}
+
+/* Mobile */
+@media (max-width: 599px) {
+  
+}
+
+/* Tablets */
+@media (min-width: 600px) and (max-width: 899px) {
+  
+}
+
+/* Laptops */
+@media (min-width: 900px) and (max-width: 1199px) {
+  
+}
+
+/* Desktops / Large Monitors */
+@media (min-width: 1200px) {
+  
+}
