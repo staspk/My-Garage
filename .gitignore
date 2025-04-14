@@ -20,5 +20,5 @@ packages/
 *.tmp
 *.cache
 
-x64/Debug/*
-!x64/Debug/*.exe
+physics_sim/physics_sim/x64/Debug/*
+!physics_sim/physics_sim/x64/Debug/*.exe
