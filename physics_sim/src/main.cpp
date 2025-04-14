@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "camera.cpp"
+
 GLFWwindow* glfwStart();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -12,6 +14,8 @@ int main(void)
 {
     GLFWwindow* window = glfwStart();
     if (!window) return -1;
+
+    Camera camera = Camera();
 
 
     int ticks = 0;
