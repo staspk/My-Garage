@@ -5,15 +5,19 @@
 
 #include "camera.cpp"
 
+
 GLFWwindow* glfwStart();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 
+int ScreenWidth, ScreenHeight;
+
 int main(void)
 {
     GLFWwindow* window = glfwStart();
     if (!window) return -1;
+
 
     Camera camera = Camera();
 
@@ -22,6 +26,8 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
+
+        std::cout << ScreenWidth << " " << ScreenHeight << std::endl;
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -41,6 +47,8 @@ void processInput(GLFWwindow* window)
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
+    ScreenWidth = width;
+    ScreenHeight = height;
     glViewport(0, 0, width, height);
 }
 
@@ -52,7 +60,7 @@ GLFWwindow* glfwStart()
     }
 
     glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-    GLFWwindow* window = glfwCreateWindow(640, 480, "3D OpenGl", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(640, 480, "OpenGl Physics Simulation", NULL, NULL);
 
     if (!window) {
         glfwTerminate();
@@ -69,9 +77,8 @@ GLFWwindow* glfwStart()
         return nullptr;
     }
 
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
-    glViewport(0, 0, width, height);
+    glfwGetFramebufferSize(window, &ScreenWidth, &ScreenHeight);
+    glViewport(0, 0, ScreenWidth, ScreenHeight);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     return window;
