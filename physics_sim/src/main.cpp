@@ -2,11 +2,12 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include <stdlib.h>
 
 #include "camera.cpp"
 
 
-GLFWwindow* glfwStart();
+GLFWwindow* CreateBorderlessFullScreenWindow();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
@@ -15,8 +16,7 @@ int ScreenWidth, ScreenHeight;
 
 int main(void)
 {
-    GLFWwindow* window = glfwStart();
-    if (!window) return -1;
+    GLFWwindow* window = CreateBorderlessFullScreenWindow();
 
 
     Camera camera = Camera();
@@ -52,20 +52,23 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-GLFWwindow* glfwStart()
+GLFWwindow* CreateBorderlessFullScreenWindow()
 {
     if (!glfwInit()) {
         std::cerr << "Failed to init GLFW!" << std::endl;
         return nullptr;
     }
 
-    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-    GLFWwindow* window = glfwCreateWindow(640, 480, "OpenGl Physics Simulation", NULL, NULL);
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+    glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
+    GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "OpenGL Physics Simulation", NULL, NULL);
 
     if (!window) {
         glfwTerminate();
         std::cerr << "Failed to create GLFW window!" << std::endl;
-        return nullptr;
+        exit(-1);
     }
 
     glfwMakeContextCurrent(window);
@@ -74,7 +77,7 @@ GLFWwindow* glfwStart()
         glfwDestroyWindow(window);
         glfwTerminate();
         std::cerr << "Failed to init GLAD!" << std::endl;
-        return nullptr;
+        exit(-1);
     }
 
     glfwGetFramebufferSize(window, &ScreenWidth, &ScreenHeight);
