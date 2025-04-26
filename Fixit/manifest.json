@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Fixit",
+    "version": "0.1",
+    "description": "Fix websites and make them look/act the way you want",
+  
+    "content_scripts": [{
+        "matches": [
+            "https://www.biblegateway.com/passage/*"
+        ],
+        "js": [
+            "models/Bible.js",
+            "utils.js",
+            "content.js"
+        ],
+        "run_at": "document_idle"
+    }]
+}
