@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <chrono>
 
+#include "cube.cpp"
 #include "camera.cpp"
 
 
@@ -12,22 +14,36 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 
+
 int ScreenWidth, ScreenHeight;
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+
+float deltaTime = 0.0f;     // time between current frame and last frame
+float lastFrame = 0.0f;
 
 int main(void)
 {
+    //exit(0);
+
     GLFWwindow* window = CreateBorderlessFullScreenWindow();
 
-
-    Camera camera = Camera();
-
-
-    int ticks = 0;
+    int ticks = 0;  
+    auto start = std::chrono::high_resolution_clock::now();
     while (!glfwWindowShouldClose(window))
     {
-        processInput(window);
+        // per-frame time logic
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
 
-        std::cout << ScreenWidth << " " << ScreenHeight << std::endl;
+
+        if (ticks % 10) {
+            std::cout << "ticks == " << ticks << std::endl;
+        }
+
+
+
+        processInput(window);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -41,8 +57,12 @@ int main(void)
 
 void processInput(GLFWwindow* window)
 {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  glfwSetWindowShouldClose(window, true);
+
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)   camera.ProcessKeyboard(FORWARD, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)   camera.ProcessKeyboard(BACKWARD, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)   camera.ProcessKeyboard(LEFT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)   camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -50,6 +70,27 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     ScreenWidth = width;
     ScreenHeight = height;
     glViewport(0, 0, width, height);
+}
+
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
+
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    //camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 GLFWwindow* CreateBorderlessFullScreenWindow()
