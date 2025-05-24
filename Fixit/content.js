@@ -19,15 +19,15 @@ if(TRANSLATIONS.length === 1) {
     const leftNavButtons = document.querySelector('.an-mobile-menu-closed');           // Goal: leave an empty red column running vertically on the keft side
     leftNavButtons.remove();
 
-    const leftAd = document.querySelector('.sidebar-tall-ad');                         // Goal: remove left ad and make the nav-bar less wide
-    leftAd.remove();
     setTimeout(() => {
-        const leftAd = document.querySelector('.sidebar-tall-ad');
-        leftAd.remove();
+        const leftAds = document.querySelectorAll('.sidebar-tall-ad');
+        leftAds.forEach(ad => {
+            ad.remove();
+        });
 
         const leftNav = document.querySelector('nav');
         leftNav.style.minWidth = '100px';
-    }, 1050);
+    }, 1025);
 
     const passageDiv = document.querySelector('.passage-col');                         // Goal: make passage padding more reasonable
     passageDiv.style.padding = '40px 500px 40px 500px';
@@ -77,6 +77,13 @@ if(TRANSLATIONS.length > 1) {
             if(arrow)   arrow.style = 'position: relative; top: -10px;';
         });
     }, 125);
+
+    setTimeout(() => {
+        const leftAds = document.querySelectorAll('.sidebar-tall-ad');
+        leftAds.forEach(ad => {
+            ad.remove();
+        });
+    }, 2000);
 
 
     // console.log(prevRect);
