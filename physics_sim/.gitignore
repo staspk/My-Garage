@@ -1,0 +1,7 @@
+.env
+.venv
+generated_data
+__pycache__
+.globals
+
+typescript/class.js
