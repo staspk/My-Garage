@@ -21,3 +21,6 @@ packages/
 *.cache
 
 physics_sim/physics_sim/
+
+/rust/speed_experiment/Cargo.lock
+/rust/speed_experiment/target
