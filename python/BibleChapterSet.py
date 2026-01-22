@@ -1,0 +1,64 @@
+"""
+Archived in case I need this version ever
+"""
+import random
+from typing import Iterator
+from definitions import PYTHON_TESTS_DIRECTORY
+from kozubenko.os import File
+from kozubenko.random import random_pop
+from kozubenko.print import Print
+from models.Bible import BIBLE, Chapter
+
+
+class BibleChapterSet():
+    """ Iterates across one,default `set[chapter_index:int]` {1-1189}"""
+    @property
+    def total_marked(self) -> int: return sum(len(set) for set in self.marked.values())
+
+    def __init__(self):
+        self.set = Protestant_Set()
+        self.marked:dict[str,set[int]] = {}
+
+    def iterate(self) -> Iterator[Chapter]:
+        """
+        **Yields:**
+            Pops a random "chapter_index" {1-1189} from `set`, yielding corresponding `Chapter` without `translation`.
+        """
+        set = self.set.copy()
+        while set.__len__() > 0:
+            chapter_index:int = random_pop(set)
+            yield BIBLE.Chapter(chapter_index)
+
+    def iterate_marked(self) -> Iterator[Chapter]:
+        marked = {key:value.copy() for key,value in self.marked.items() if len(value) > 0}
+        left = sum(len(set) for set in marked.values())
+        while left > 0:
+            translation = random.choice(tuple(marked.keys()))
+            chapter_index = random_pop(marked[translation])
+            PTR:Chapter = BIBLE.Chapter(chapter_index)
+            yield Chapter(PTR.book, PTR.chapter, PTR.index, translation)
+
+            left -= 1
+            if marked[translation].__len__() == 0:
+                del marked[translation]
+
+    def mark(self, translation:str, chap_index:int):
+        if translation not in self.marked.keys(): self.marked[translation] = set([chap_index])
+        else: self.marked[translation].add(chap_index)
+
+    def ratio(self) -> str:
+        """ `{marked}/{total_chapters}` """
+        marked = 0; total_chapters = 0
+        for chapters in self.marked.values():
+            marked += len(chapters)
+            total_chapters += BIBLE.TOTAL_CHAPTERS
+        return f'{marked}/{total_chapters}'
+
+    def Save_Report(self, test='Poetry Form'):
+        report = ""
+        for translation,marked_chapters in self.marked.items():
+            report += f'{translation} = {str(marked_chapters)}\n'
+        report += f'{test}: {self.ratio()}'
+
+        File(PYTHON_TESTS_DIRECTORY, f'identify_{test.replace(" ", "_").lower()}').save(report, encoding='UTF-8')
+        Print.yellow(f'{test}: {self.ratio()}')
